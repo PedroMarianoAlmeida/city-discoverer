@@ -63,6 +63,7 @@ function App() {
           country: data.results[0].address_components[5].long_name,
           city: data.results[0].address_components[3].long_name,
         });
+        console.log(resGoogle);
       }
     } catch (e) {
       console.log(e);
