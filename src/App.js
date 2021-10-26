@@ -44,6 +44,7 @@ function App() {
         `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=pt`
       ),
       fetch(
+        //This is a paid service
         `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${process.env.REACT_APP_GOOGLE_CLOUD}`
       ),
     ];
@@ -58,7 +59,10 @@ function App() {
 
       if (resGoogle.ok) {
         const data = await resGoogle.json();
-        console.log(data);
+        setGoogleCloudData({
+          country: data.results[0].address_components[5].long_name,
+          city: data.results[0].address_components[3].long_name,
+        });
       }
     } catch (e) {
       console.log(e);
