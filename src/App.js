@@ -59,7 +59,6 @@ function App() {
 
       if (resGoogle.ok) {
         const data = await resGoogle.json();
-        console.log(data);
         setGoogleCloudData({
           country: data.results[0].address_components[5].long_name,
           city: data.results[0].address_components[3].long_name,
